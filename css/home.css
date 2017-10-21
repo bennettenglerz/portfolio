@@ -1,0 +1,55 @@
+body {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0px;
+}
+h1 {
+    position: absolute;
+    left: 36.5%;
+    top: 42%;
+    color: white;
+}
+.canvas {
+  height: 100vh;
+}
+.aboutMe {
+  height: 100vh;
+}
+.aboutMe h2 {
+  position: absolute;
+  padding-left: 12%;
+  padding-top: 5%;
+  font-size:60px;
+}
+.aboutMe h3 {
+  position: absolute;
+  padding-left: 67%;
+  padding-top: 5%;
+  font-size:60px;
+}
+.aboutMe p {
+  position: absolute;
+  padding-left: 8%;
+  padding-top: 22%;
+  font-size:25px;
+}
+.bio {
+  color: #000000;
+  position: absolute;
+  padding-left: 25%;
+  padding-top: 42%;
+  font-size:40px;
+}
+.bio:hover {
+  color: #c4c4c4;
+  text-decoration: none;
+}
+.work {
+  color: #000000;
+  position: absolute;
+  padding-left: 83%;
+  padding-top: 42%;
+  font-size:40px;
+}

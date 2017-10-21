@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Zack Bennett-Engler style</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/home.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Background Canvas -->
+  <div class="canvas" id="myCanvas">
+    <h1>Zack Bennett-Engler</h1>
+    <canvas id="sketchpad" width="1300" height="800"></canvas>
+  </div>
+
+  <div class="aboutMe">
+    <h2>About Me</h2>
+    <h3>My Work</h3>
+    <svg height="800" width="1300">
+      <polygon points="0,200 600,200 1000,650 0,650"
+                style="fill:yellow; opacity: 0.7;"/>
+      <polygon points="650,200 1300,200 1300,650 1050,650"
+                style="fill:#c4c4c4; opacity: 0.5;"/>
+    </svg>
+  </div>
+
+  <!-- Script for Canvas -->
+  <script>
+    var canvas, ctx;
+    var mouseX, mouseY, lastX, lastY;
+    var canvasWidth = 1300;
+    var canvasHeight = 800;
+
+    function draw(ctx,x,y,size) {
+      if (lastX && lastY && (x !== lastX || y !== lastY)) {
+          ctx.lineWidth = size;
+          ctx.beginPath();
+          ctx.moveTo(lastX, lastY);
+          ctx.lineTo(x, y);
+          ctx.strokeStyle="white";
+          ctx.stroke();
+      }
+      ctx.beginPath();
+      ctx.closePath();
+      ctx.fill();
+      lastX = x;
+      lastY = y;
+    }
+
+    function onMouseMove(e) {
+      getMousePos(e);
+      draw(ctx, mouseX, mouseY, 1.5);
+    }
+
+    function getMousePos(e) {
+      if (!e)
+          var e = event;
+      if (e.offsetX) {
+          mouseX = e.offsetX;
+          mouseY = e.offsetY;
+      }
+      else if (e.layerX) {
+          mouseX = e.layerX;
+          mouseY = e.layerY;
+      }
+    }
+
+    function init() {
+      canvas = document.getElementById('sketchpad');
+      ctx = canvas.getContext('2d');
+      ctx.fillRect(0,0,canvasWidth,canvasHeight);
+      canvas.addEventListener('mousemove', onMouseMove, false);
+    }
+
+    init();
+
+  </script>
+</body>
+</html>
