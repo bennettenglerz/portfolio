@@ -1,8 +1,5 @@
 body {
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 0;
-  margin-top: 0;
+  margin: 0;
   padding: 0px;
 }
 h1 {
@@ -35,22 +32,4 @@ h1 {
   padding-left: 8%;
   padding-top: 22%;
   font-size:25px;
-}
-.bio {
-  color: #000000;
-  position: absolute;
-  padding-left: 25%;
-  padding-top: 42%;
-  font-size:40px;
-}
-.bio:hover {
-  color: #c4c4c4;
-  text-decoration: none;
-}
-.work {
-  color: #000000;
-  position: absolute;
-  padding-left: 83%;
-  padding-top: 42%;
-  font-size:40px;
 }
