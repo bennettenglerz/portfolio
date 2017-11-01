@@ -1,91 +1,137 @@
 <!-- Programming Basics
 Zack Bennett-Engler
 bennettzack68@gmail.com
-assignment6_0
-Portfolio Website
-Hosted on Github Pages, NameCheap
-link: bennettengler.com
+assignment7_0
+Portfolio Website 2
  -->
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Bennett-Engler</title>
   <meta charset="utf-8">
 
-  <title>Zack Bennett-Engler style</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
 
-  <link href="css/home.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
-  <!-- Background Canvas -->
-  <div class="canvas" id="myCanvas">
-    <h1>Zack Bennett-Engler</h1>
-    <canvas id="sketchpad" width="1300" height="800"></canvas>
+  <div id="name"><h1>Zack Bennett-Engler</h1></div>
+  <div id="lines"></div>
+  <div id="circles"></div>
+  <div id="panels">
+    <div id="panel1">
+      <h1>Interactive Design</h1>
+    </div>
+    <div id="panel2">
+      <h1>Generative Art</h1>
+    </div>
+    <div id="panel3">
+      <h1>Physical Media</h1>
+    </div>
   </div>
 
-  <div class="aboutMe">
-    <h2>About Me</h2>
-    <h3>My Work</h3>
-    <svg height="800" width="1300">
-      <polygon points="0,200 600,200 1000,650 0,650"
-                style="fill:yellow; opacity: 0.7;"/>
-      <polygon points="650,200 1300,200 1300,650 1050,650"
-                style="fill:#c4c4c4; opacity: 0.5;"/>
-    </svg>
-  </div>
+  <script id="lineScript" type="text/javascript">
+    var sketch = function(p) {
+      var windowWidth = 1300;
+      var windowHeight = 800;
 
-  <!-- Script for Canvas -->
-  <script>
-    var canvas, ctx;
-    var mouseX, mouseY, lastX, lastY;
-    var canvasWidth = 1300;
-    var canvasHeight = 800;
+      var strokeColor;
+      var radius;
+      var initialRadius;
+      var theta1;
+      var theta2;
 
-    function draw(ctx,x,y,size) {
-      if (lastX && lastY && (x !== lastX || y !== lastY)) {
-          ctx.lineWidth = size;
-          ctx.beginPath();
-          ctx.moveTo(lastX, lastY);
-          ctx.lineTo(x, y);
-          ctx.strokeStyle="white";
-          ctx.stroke();
-      }
-      ctx.beginPath();
-      ctx.closePath();
-      ctx.fill();
-      lastX = x;
-      lastY = y;
-    }
+      var strokeColorStep;
+      var radiusNoise;
+      var theta1Noise;
+      var theta2Noise;
 
-    function onMouseMove(e) {
-      getMousePos(e);
-      draw(ctx, mouseX, mouseY, 1.5);
-    }
+      p.setup = function () {
+        p.createCanvas(windowWidth, windowHeight);
+        p.background(255);
+        p.smooth();
+        p.frameRate(10000);
 
-    function getMousePos(e) {
-      if (!e)
-          var e = event;
-      if (e.offsetX) {
-          mouseX = e.offsetX;
-          mouseY = e.offsetY;
-      }
-      else if (e.layerX) {
-          mouseX = e.layerX;
-          mouseY = e.layerY;
-      }
-    }
+        radius = 300;
+        initialRadius = 550;
+        theta1 = p.PI;
+        theta2 = p.PI;
 
-    function init() {
-      canvas = document.getElementById('sketchpad');
-      ctx = canvas.getContext('2d');
-      ctx.fillRect(0,0,canvasWidth,canvasHeight);
-      canvas.addEventListener('mousemove', onMouseMove, false);
-    }
+        strokeColor = 0;
+        strokeColorStep = .5;
+        radiusNoise = p.random(100);
+        theta1Noise = p.random(100);
+        theta2Noise = p.random(100);
+      };
 
-    init();
+      p.draw = function () {
+        radius = initialRadius + p.map(p.noise(radiusNoise + p.frameCount * 0.01), 0, 1, -75, 75);
+        theta1 += p.map(p.noise(theta1Noise + p.frameCount * 0.01), 0, 1, -p.PI / 32, p.PI / 32);
+        theta2 += p.map(p.noise(theta2Noise + p.frameCount * 0.01), 0, 1, -p.PI / 32, p.PI / 32);
 
+        if(theta1 < 0){
+          theta1 += p.TWO_PI;
+        } else if(theta1 >= p.TWO_PI){
+          theta1 -= p.TWO_PI;
+        }
+        if(theta2 < 0){
+          theta2 += p.TWO_PI;
+        } else if(theta2 >= p.TWO_PI){
+          theta2 -= p.TWO_PI;
+        }
+
+        strokeColor += strokeColorStep;
+        if(strokeColor < 0){
+          strokeColor = 0;
+          strokeColorStep *= -1;
+        }
+        if(strokeColor > 255){
+          strokeColor = 255;
+          strokeColorStep *= -1;
+        }
+
+        var x1 = radius * p.sin(theta1) * p.cos(theta2);
+        var y1 = radius * p.sin(theta1) * p.sin(theta2);
+        var z1 = radius * p.cos(theta1) * p.cos(theta2);
+        var x2 = -x1;
+        var y2 = -y1;
+        var z2 = -z1;
+
+
+        p.stroke(strokeColor);
+        p.translate(windowWidth/2, windowHeight/2);
+        p.line(x1, y1, z1, x2, y2, z2);
+      };
+    };
+    new p5(sketch, "circles");
+  </script>
+  <script id="circleScript" type="text/javascript">
+    var sketch = function(p) {
+      var windowWidth = 1300;
+      var windowHeight = 750;
+
+      p.setup = function () {
+        p.createCanvas(windowWidth, windowHeight);
+      };
+
+      p.draw = function () {
+        p.background(255);
+        p.fill(0);
+
+        for (var x = 0+25; x < windowWidth; x +=50) {
+          for (var y = 0+25; y < windowHeight; y +=50) {
+          var distChange = 4;
+          var radius = p.dist(p.mouseX/distChange, p.mouseY/distChange, x/distChange ,y/distChange);
+
+          radius = 50*(radius/windowWidth);
+          p.ellipse(x,y,0+radius,0+radius);
+          }
+        }
+      };
+    };
+    new p5(sketch, "circles");
   </script>
 </body>
 </html>

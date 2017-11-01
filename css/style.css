@@ -1,0 +1,81 @@
+html, body {
+  width:  100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+#name {
+  position:absolute;
+  left:28%;
+  top: 38%;
+  background-color: transparent;
+  color: white;
+  font-size: 2em;
+  z-index: 1;
+}
+#panel1 {
+  position: absolute;
+  background-color: black;
+  opacity: .75;
+  box-shadow: 0 0 10px black;
+  width: 27vw;
+  height: 74vh;
+  top: 900px;
+  left: 50px;
+}
+#panel1:hover {
+  top: 885px;
+  left: 35px;
+  height: 78vh;
+  width: 31vw;
+}
+#panel1 h1 {
+  opacity: 1.0;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+}
+#panel2 {
+  position: absolute;
+  background-color: black;
+  opacity: .75;
+  box-shadow: 0 0 10px black;
+  width: 27vw;
+  height: 74vh;
+  top: 900px;
+  left: 475px;
+}
+#panel2:hover {
+  top: 885px;
+  left: 460px;
+  height: 78vh;
+  width: 31vw;
+}
+#panel2 h1 {
+  opacity: 1.0;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+}
+#panel3 {
+  position: absolute;
+  background-color: black;
+  opacity: .75;
+  box-shadow: 0 0 10px black;
+  width: 27vw;
+  height: 74vh;
+  top: 900px;
+  left: 900px;
+}
+#panel3:hover {
+  top: 885px;
+  left: 885px;
+  height: 78vh;
+  width: 31vw;
+}
+#panel3 h1 {
+  opacity: 1.0;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+}
