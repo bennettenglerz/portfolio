@@ -7,16 +7,16 @@ html, body {
 #name {
   position:absolute;
   left:28%;
-  top: 38%;
+  top: 35%;
   background-color: transparent;
-  color: white;
+  color: black;
   font-size: 2em;
   z-index: 1;
 }
 #panel1 {
   position: absolute;
-  background-color: black;
-  opacity: .75;
+  background-color: white;
+  opacity: .9;
   box-shadow: 0 0 10px black;
   width: 27vw;
   height: 74vh;
@@ -31,14 +31,14 @@ html, body {
 }
 #panel1 h1 {
   opacity: 1.0;
-  color: white;
+  color: black;
   font-size: 40px;
   text-align: center;
 }
 #panel2 {
   position: absolute;
-  background-color: black;
-  opacity: .75;
+  background-color: white;
+  opacity: .9;
   box-shadow: 0 0 10px black;
   width: 27vw;
   height: 74vh;
@@ -53,14 +53,14 @@ html, body {
 }
 #panel2 h1 {
   opacity: 1.0;
-  color: white;
+  color: black;
   font-size: 40px;
   text-align: center;
 }
 #panel3 {
   position: absolute;
-  background-color: black;
-  opacity: .75;
+  background-color: white;
+  opacity: .9;
   box-shadow: 0 0 10px black;
   width: 27vw;
   height: 74vh;
@@ -75,7 +75,7 @@ html, body {
 }
 #panel3 h1 {
   opacity: 1.0;
-  color: white;
+  color: black;
   font-size: 40px;
   text-align: center;
 }

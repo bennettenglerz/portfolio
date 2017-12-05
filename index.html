@@ -24,7 +24,7 @@ bennettengler.com
   <div id="circles"></div>
   <div id="panels">
     <div id="panel1">
-      <h1>Interactive Design</h1>
+      <h1>Interaction Design</h1>
     </div>
     <div id="panel2">
       <h1>Generative Art</h1>
@@ -33,6 +33,32 @@ bennettengler.com
       <h1>Physical Media</h1>
     </div>
   </div>
+  <script id="circleScript" type="text/javascript">
+    var sketch = function(p) {
+      var windowWidth = 1300;
+      var windowHeight = 800;
+
+      p.setup = function () {
+        p.createCanvas(windowWidth, windowHeight);
+      };
+
+      p.draw = function () {
+        p.background(255);
+        p.fill(0);
+
+        for (var x = 0+25; x < windowWidth; x +=50) {
+          for (var y = 0+25; y < windowHeight; y +=50) {
+          var distChange = 4;
+          var radius = p.dist(p.mouseX/distChange, p.mouseY/distChange, x/distChange ,y/distChange);
+
+          radius = 50*(radius/windowWidth);
+          p.ellipse(x,y,0+radius,0+radius);
+          }
+        }
+      };
+    };
+    new p5(sketch, "circles");
+  </script>
 
   <script id="lineScript" type="text/javascript">
     var sketch = function(p) {
@@ -105,32 +131,6 @@ bennettengler.com
         p.stroke(strokeColor);
         p.translate(windowWidth/2, windowHeight/2);
         p.line(x1, y1, z1, x2, y2, z2);
-      };
-    };
-    new p5(sketch, "circles");
-  </script>
-  <script id="circleScript" type="text/javascript">
-    var sketch = function(p) {
-      var windowWidth = 1300;
-      var windowHeight = 750;
-
-      p.setup = function () {
-        p.createCanvas(windowWidth, windowHeight);
-      };
-
-      p.draw = function () {
-        p.background(255);
-        p.fill(0);
-
-        for (var x = 0+25; x < windowWidth; x +=50) {
-          for (var y = 0+25; y < windowHeight; y +=50) {
-          var distChange = 4;
-          var radius = p.dist(p.mouseX/distChange, p.mouseY/distChange, x/distChange ,y/distChange);
-
-          radius = 50*(radius/windowWidth);
-          p.ellipse(x,y,0+radius,0+radius);
-          }
-        }
       };
     };
     new p5(sketch, "circles");
