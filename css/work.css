@@ -44,7 +44,7 @@ a {
 }
 .cs {
   position: relative;
-  left: 250px;
+  left: 230px;
   top: 144px;
   width: 260px;
   height: 110px;
@@ -57,7 +57,7 @@ a {
 .ux {
   position: relative;
   top: 34px;
-  left: 610px;
+  left: 590px;
   width: 260px;
   height: 110px;
   color: #999999;
@@ -69,7 +69,7 @@ a {
 .pm {
   position: relative;
   top: -76px;
-  left: 970px;
+  left: 950px;
   width: 260px;
   height: 110px;
   color: #999999;
